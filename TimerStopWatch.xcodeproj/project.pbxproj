@@ -7,20 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FF42C8D52A47CD3E00EE0CEF /* RealityKitContent in Frameworks */ = {isa = PBXBuildFile; productRef = FF42C8D42A47CD3E00EE0CEF /* RealityKitContent */; };
 		FF42C8D72A47CD3E00EE0CEF /* TimerStopWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF42C8D62A47CD3E00EE0CEF /* TimerStopWatchApp.swift */; };
 		FF42C8D92A47CD3E00EE0CEF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF42C8D82A47CD3E00EE0CEF /* ContentView.swift */; };
 		FF42C8DB2A47CD4400EE0CEF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF42C8DA2A47CD4400EE0CEF /* Assets.xcassets */; };
 		FF42C8DE2A47CD4500EE0CEF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF42C8DD2A47CD4500EE0CEF /* Preview Assets.xcassets */; };
+		FF42C8E52A47F19300EE0CEF /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF42C8E42A47F19300EE0CEF /* ViewModel.swift */; };
+		FF42C8E72A47F1B400EE0CEF /* ClockType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF42C8E62A47F1B400EE0CEF /* ClockType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		FF42C8CF2A47CD3E00EE0CEF /* TimerStopWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimerStopWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		FF42C8D32A47CD3E00EE0CEF /* RealityKitContent */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = RealityKitContent; sourceTree = "<group>"; };
 		FF42C8D62A47CD3E00EE0CEF /* TimerStopWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerStopWatchApp.swift; sourceTree = "<group>"; };
 		FF42C8D82A47CD3E00EE0CEF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		FF42C8DA2A47CD4400EE0CEF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FF42C8DD2A47CD4500EE0CEF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		FF42C8E42A47F19300EE0CEF /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		FF42C8E62A47F1B400EE0CEF /* ClockType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -28,7 +30,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF42C8D52A47CD3E00EE0CEF /* RealityKitContent in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -39,7 +40,6 @@
 			isa = PBXGroup;
 			children = (
 				FF42C8D12A47CD3E00EE0CEF /* TimerStopWatch */,
-				FF42C8D22A47CD3E00EE0CEF /* Packages */,
 				FF42C8D02A47CD3E00EE0CEF /* Products */,
 			);
 			sourceTree = "<group>";
@@ -57,18 +57,12 @@
 			children = (
 				FF42C8D62A47CD3E00EE0CEF /* TimerStopWatchApp.swift */,
 				FF42C8D82A47CD3E00EE0CEF /* ContentView.swift */,
+				FF42C8E42A47F19300EE0CEF /* ViewModel.swift */,
+				FF42C8E62A47F1B400EE0CEF /* ClockType.swift */,
 				FF42C8DA2A47CD4400EE0CEF /* Assets.xcassets */,
 				FF42C8DC2A47CD4500EE0CEF /* Preview Content */,
 			);
 			path = TimerStopWatch;
-			sourceTree = "<group>";
-		};
-		FF42C8D22A47CD3E00EE0CEF /* Packages */ = {
-			isa = PBXGroup;
-			children = (
-				FF42C8D32A47CD3E00EE0CEF /* RealityKitContent */,
-			);
-			path = Packages;
 			sourceTree = "<group>";
 		};
 		FF42C8DC2A47CD4500EE0CEF /* Preview Content */ = {
@@ -96,7 +90,6 @@
 			);
 			name = TimerStopWatch;
 			packageProductDependencies = (
-				FF42C8D42A47CD3E00EE0CEF /* RealityKitContent */,
 			);
 			productName = TimerStopWatch;
 			productReference = FF42C8CF2A47CD3E00EE0CEF /* TimerStopWatch.app */;
@@ -152,7 +145,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF42C8E72A47F1B400EE0CEF /* ClockType.swift in Sources */,
 				FF42C8D92A47CD3E00EE0CEF /* ContentView.swift in Sources */,
+				FF42C8E52A47F19300EE0CEF /* ViewModel.swift in Sources */,
 				FF42C8D72A47CD3E00EE0CEF /* TimerStopWatchApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -353,13 +348,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		FF42C8D42A47CD3E00EE0CEF /* RealityKitContent */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = RealityKitContent;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = FF42C8C72A47CD3E00EE0CEF /* Project object */;
 }
