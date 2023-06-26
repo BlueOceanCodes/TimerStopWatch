@@ -9,13 +9,14 @@ import Foundation
 import Observation
 
 @Observable class ViewModel {
-    private var minutes = 7
-    private var seconds = 0
-    private var timer: Timer = Timer()
 
     var clockType = ClockType.Timer
-
+    private(set) var canEditTimer = false
     private (set) var buttonText = "  Start   "
+
+    private var minutes = 0
+    private var seconds = 0
+    private var timer: Timer = Timer()
     private let startButtonText = "  Start   "
     private let stopButtonText = "  Stop  "
 
@@ -93,7 +94,7 @@ import Observation
         buttonText = startButtonText
     }
 
-    func startClock() {
+    private func startClock() {
         switch clockType {
         case .Timer:
             startTimer()
@@ -103,7 +104,7 @@ import Observation
         buttonText = stopButtonText
     }
 
-    func stopClock() {
+    private func stopClock() {
         switch clockType {
         case .Timer:
             stopTimer()
@@ -113,7 +114,7 @@ import Observation
         buttonText = startButtonText
     }
 
-    func startStopWatch() {
+    private func startStopWatch() {
 
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] timer in
             self?.seconds += 1
@@ -131,30 +132,41 @@ import Observation
         timer.tolerance = 0.001
     }
 
-    func stopStopWatch() {
+    private func stopStopWatch() {
         timer.invalidate()
     }
 
-    func startTimer() {
-        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
-            self?.seconds -= 1
-            if self?.seconds == 0 &&
-                self?.minutes == 0 {
-                self?.timer.invalidate()
+    private func startTimer() {
+        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] timer in
+
+            guard var seconds = self?.seconds else { return }
+
+
+            if seconds > 0 {
+                seconds -= 1
             }
 
-            if self?.seconds == 0 &&
+
+            if seconds == 0 &&
                 self?.minutes ?? 0 > 0 {
-                self?.seconds -= 1
+                self?.minutes -= 1
+                seconds = 59
             }
+
+            if seconds == 0 &&
+                self?.minutes == 0 {
+                timer.invalidate()
+                self?.buttonText = self?.startButtonText ?? ""
+            }
+
+            self?.seconds = seconds
         }
 
         timer.tolerance = 0.001
     }
 
-    func stopTimer() {
+    private func stopTimer() {
         timer.invalidate()
         print(#function)
     }
-
 }

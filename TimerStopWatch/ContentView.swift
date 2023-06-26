@@ -19,12 +19,14 @@ struct ContentView: View {
                     Image(systemName: "chevron.up")
                         .offset(x: -21.0, y: 4)
                         .foregroundColor(.green)
+                        .disabled(viewModel.canEditTimer)
                         .onTapGesture {
                             viewModel.incrementTimerMinutes()
                         }
                     Image(systemName: "chevron.up")
                         .offset(x: 21.0, y: 4)
                         .foregroundColor(.green)
+                        .disabled(viewModel.canEditTimer)
                         .onTapGesture {
                             viewModel.incrementTimerSeconds()
                         }
@@ -34,6 +36,7 @@ struct ContentView: View {
             }
             .font(.title)
             .frame(height: 30)
+            .imageScale(.large)
 
             HStack(spacing: 4) {
                 Text(viewModel.minutesString())
@@ -52,12 +55,14 @@ struct ContentView: View {
                     Image(systemName: "chevron.down")
                         .offset(x: -21.0, y: -4)
                         .foregroundColor(.red)
+                        .disabled(viewModel.canEditTimer)
                         .onTapGesture {
                             viewModel.decrementTimerMinutes()
                         }
                     Image(systemName: "chevron.down")
                         .offset(x: 21.0, y: -4)
                         .foregroundColor(.red)
+                        .disabled(viewModel.canEditTimer)
                         .onTapGesture {
                             viewModel.decrementTimerSeconds()
                         }
@@ -70,6 +75,7 @@ struct ContentView: View {
             }
             .font(.title)
             .frame(height: 30)
+            .imageScale(.large)
 
             Button(viewModel.buttonText) {
                 viewModel.toggleClock()
