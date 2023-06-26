@@ -10,7 +10,6 @@ import SwiftUI
 struct ContentView: View {
 
     @State private var viewModel = ViewModel()
-    var startButtonText = "  Start   "
 
     var body: some View {
 
@@ -21,13 +20,13 @@ struct ContentView: View {
                         .offset(x: -21.0, y: 4)
                         .foregroundColor(.green)
                         .onTapGesture {
-                            viewModel.incrementMinutes()
+                            viewModel.incrementTimerMinutes()
                         }
                     Image(systemName: "chevron.up")
                         .offset(x: 21.0, y: 4)
                         .foregroundColor(.green)
                         .onTapGesture {
-                            viewModel.incrementSeconds()
+                            viewModel.incrementTimerSeconds()
                         }
                 } else {
                     EmptyView()
@@ -54,33 +53,31 @@ struct ContentView: View {
                         .offset(x: -21.0, y: -4)
                         .foregroundColor(.red)
                         .onTapGesture {
-                            viewModel.decrementMinutes()
+                            viewModel.decrementTimerMinutes()
                         }
                     Image(systemName: "chevron.down")
                         .offset(x: 21.0, y: -4)
                         .foregroundColor(.red)
                         .onTapGesture {
-                            viewModel.decrementSeconds()
+                            viewModel.decrementTimerSeconds()
                         }
 
                 } else {
                     Group {
                         EmptyView()
                     }
-
                 }
             }
             .font(.title)
             .frame(height: 30)
 
-            Button(startButtonText) {
-
+            Button(viewModel.buttonText) {
+                viewModel.toggleClock()
             }
             .buttonStyle(.borderedProminent)
             .controlSize(.large)
             .padding(.bottom)
             .disabled(viewModel.isInvalidState())
-
         }
         .padding(.top, 16)
         .padding(.horizontal, 25)
@@ -93,6 +90,10 @@ struct ContentView: View {
             .pickerStyle(.segmented)
             .padding()
             .frame(width: 350)
+            .onChange(of: viewModel.clockType) {
+                
+                viewModel.resetClockTime()
+            }
 
         }
         .frame(height: 230)
