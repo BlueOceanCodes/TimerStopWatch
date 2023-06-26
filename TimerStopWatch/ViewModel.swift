@@ -37,9 +37,16 @@ import Observation
     }
 
     func incrementTimerSeconds() {
+
+        if minutes == 60 {
+            seconds = 0
+            return
+        }
+
         if seconds < 59 {
             seconds += 1
         } else {
+            incrementTimerMinutes()
             seconds = 0
         }
     }
@@ -49,6 +56,7 @@ import Observation
             seconds -= 1
         } else {
             seconds = 59
+            decrementTimerMinutes()
         }
     }
 
